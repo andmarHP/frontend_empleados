@@ -11,7 +11,7 @@ import { Empleado } from '../Interface/empleado';
 export class EmpleadoService {
 
   private readonly endpoint:string = environment.endPoint;
-  private readonly apiUrl:string = this.endpoint + 'empleado';
+  private readonly apiUrl:string = this.endpoint + 'empleados';
 
   constructor( private _http:HttpClient ) { }
 
