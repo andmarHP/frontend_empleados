@@ -3,6 +3,8 @@
         Lista de Empleados
     </h1>
 
+    <button mat-raised-button color="primary" (click)="dialogoNuevoEmpleado()">Nuevo Empleado</button>
+
     <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
