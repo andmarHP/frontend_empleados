@@ -9,4 +9,5 @@ npm install @angular/material-moment-adapter
 # get the object of the form with all its values
 this.formEmpleado.value
 
-2:50 minuite
+# DialogoAddEdit
+Dialogo multiuso tanto para agregar como para eliminar
