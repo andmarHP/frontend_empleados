@@ -92,7 +92,9 @@ export class DialogAddEditComponent implements OnInit{
     sueldo: this.formEmpleado.value.sueldo,
     fechaContrato:moment(this.formEmpleado.value.fechaContrato).format("DD/MM/YYYY")
    }
-   this._empleadoService.add(modelo)
+
+   if(this.dataEmpleado == null){
+    this._empleadoService.add(modelo)
     .subscribe({
        next: (data:any)=>{
         this.mostrarAlerta("Empleado fue creado","Listo")
@@ -102,6 +104,19 @@ export class DialogAddEditComponent implements OnInit{
         this.mostrarAlerta("No se pudo crear","Error")
        }
     })
+   }
+   else{
+    this._empleadoService.update(this.dataEmpleado.idEmpleado, modelo)
+      .subscribe({
+        next: (data:any)=>{
+          this.mostrarAlerta("Empleado fue editado","Listo")
+          this._dialogoReferencia.close("editado");  
+        },
+        error:(e) =>{
+          this.mostrarAlerta("No se pudo crear","Error")
+         }
+      })
+   }
 
   }
 
