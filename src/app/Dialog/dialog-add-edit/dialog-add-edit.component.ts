@@ -114,6 +114,9 @@ export class DialogAddEditComponent implements OnInit{
           fechaContrato:moment(this.dataEmpleado.fechaContrato,'DD/MM/YYYY')
         });
       }
+
+      this.tituloAccion = 'Editar';
+      this.botonAccion = 'Actualizar';
   }  
 
 }
