@@ -56,6 +56,13 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   dialogoNuevoEmpleado(){
-    this.dialog.open(DialogAddEditComponent);
+    this.dialog.open(DialogAddEditComponent,{
+      disableClose:true,
+      width:"450px"
+    }).afterClosed().subscribe( resultado =>{
+      if(resultado === "creado"){
+        this.mostrarEmpleados();
+      }
+    })
   }
 }

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ tituloAccion }} Empleado</h1>
 <div mat-dialog-content>
     <form [formGroup]="formEmpleado" autocomplete="off">
-        <mat-grid-list cols="1" rowHeight="80px">
+        <mat-grid-list cols="1" rowHeight="90px">
             
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
@@ -38,5 +38,8 @@
     </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" (click)="addEditEmpleado()" [disabled]="formEmpleado.invalid">
+        {{ botonAccion }}
+    </button>
 </div>

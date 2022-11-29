@@ -81,8 +81,25 @@ export class DialogAddEditComponent implements OnInit{
 
   // metodo para enviar 
   addEditEmpleado(){
-    console.log(this.formEmpleado)
-    console.log(this.formEmpleado.value)
+   console.log(this.formEmpleado.value);
+
+   const modelo:Empleado = {
+    idEmpleado:0,
+    nombreCompleto: this.formEmpleado.value.nombreCompleto,
+    idDepartamento: this.formEmpleado.value.idDepartamento,
+    sueldo: this.formEmpleado.value.sueldo,
+    fechaContrato:moment(this.formEmpleado.value.fechaContrato).format("DD/MM/YYYY")
+   }
+   this._empleadoService.add(modelo)
+    .subscribe({
+       next: (data:any)=>{
+        this.mostrarAlerta("Empleado fue creado","Listo")
+        this._dialogoReferencia.close("creado");
+       },
+       error:(e) =>{
+        this.mostrarAlerta("No se pudo crear","Error")
+       }
+    })
 
   }
 
