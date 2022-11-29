@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';  // dialog
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';  // dialog
 import { MatSnackBar } from '@angular/material/snack-bar';  //alertas
 import { MAT_DATE_FORMATS } from '@angular/material/core';  //formato fecha
 import * as moment from 'moment';
@@ -47,7 +47,9 @@ export class DialogAddEditComponent implements OnInit{
                private _fb:FormBuilder,
                private _snackBar:MatSnackBar,
                private _empleadoService:EmpleadoService,
-               private _departamentoService:DepartamentoService) 
+               private _departamentoService:DepartamentoService,
+               @Inject(MAT_DIALOG_DATA) public dataEmpleado:Empleado
+  )
   {
     this.formEmpleado = this._fb.group({
       nombreCompleto:['', Validators.required],
@@ -104,7 +106,14 @@ export class DialogAddEditComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      
+      if (this.dataEmpleado){
+        this.formEmpleado.patchValue({
+          nombreCompleto:this.dataEmpleado.nombreCompleto,
+          idDepartamento:this.dataEmpleado.idDepartamento,
+          sueldo:this.dataEmpleado.sueldo,
+          fechaContrato:moment(this.dataEmpleado.fechaContrato,'DD/MM/YYYY')
+        });
+      }
   }  
 
 }

@@ -65,4 +65,16 @@ export class AppComponent implements AfterViewInit, OnInit {
       }
     })
   }
+
+  dialogoEditarEmpleado(dataEmpleado:Empleado){
+    this.dialog.open(DialogAddEditComponent,{
+      disableClose:true,  //deshabilitar cuando se presione fuera del modal
+      width:"450px",
+      data:dataEmpleado
+    }).afterClosed().subscribe( resultado =>{
+      if(resultado === "editado"){
+        this.mostrarEmpleados();
+      }
+    })
+  }
 }
