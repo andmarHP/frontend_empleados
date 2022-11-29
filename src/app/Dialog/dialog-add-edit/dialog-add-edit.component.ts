@@ -128,10 +128,10 @@ export class DialogAddEditComponent implements OnInit{
           sueldo:this.dataEmpleado.sueldo,
           fechaContrato:moment(this.dataEmpleado.fechaContrato,'DD/MM/YYYY')
         });
-      }
 
-      this.tituloAccion = 'Editar';
-      this.botonAccion = 'Actualizar';
+        this.tituloAccion = 'Editar';
+        this.botonAccion = 'Actualizar';
+      }
   }  
 
 }
